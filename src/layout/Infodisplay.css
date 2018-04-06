@@ -1,0 +1,28 @@
+.Infodisplay {
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.Pollutant {
+    display: block;
+    background-color: black;
+    margin: 10px auto;
+    width: 95%;
+    height: 230px;
+}
+
+svg text {
+    color: white;
+}
+
+.PollutantData, PollutantLimits {
+    font-size: 12px;
+    color: white;
+}
+
+.PollutantValue {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}

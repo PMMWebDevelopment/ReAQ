@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700&subset=latin-ext');
+.App {
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 95vh;
+    width: 100vw;
+    text-align: center;
+}
+
+.Header {
+     width: 100%;
+     display: block;
+     padding-left: 0;
+     padding-right: 0;
+     position: fixed;
+     top: 0;
+     margin: 0 0;
+}
+
+.Infodisplay {
+    display: block;
+    min-height: 400px;
+    width: 95%;
+}
+
+.Footer {
+    display: block;
+    height: 50px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+

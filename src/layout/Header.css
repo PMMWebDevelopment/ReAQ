@@ -1,0 +1,23 @@
+.Header {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.Row {
+    width: 100%
+}
+
+.Header h1 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.Dropdown {
+    margin: 10px 0;
+}
+
+.About {
+    margin-top: 20px;
+    float: right;
+}
