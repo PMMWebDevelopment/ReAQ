@@ -5,15 +5,27 @@ import Infodisplay from './layout/Infodisplay';
 import Footer from './layout/Footer';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { chosenLocation: "" };
+    this.changeLocation = this.changeLocation.bind(this);
+  }
+
+  changeLocation(locationFromHeader) {
+    this.setState({
+      chosenLocation: locationFromHeader
+    });
+  }
+
   render() {
     return (
-        <div className={classes.App}>
-          <Header></Header>
-          <Infodisplay></Infodisplay>
-          <Footer></Footer>
-        </div>
-      );
-  };  
+      <div className={classes.App}>
+        <Header locationCallbackFromAppJS={this.changeLocation}/>
+        <Infodisplay chosenLocationFromAppJS={this.state.chosenLocation}/>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

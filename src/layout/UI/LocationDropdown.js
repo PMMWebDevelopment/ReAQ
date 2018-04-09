@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   Dropdown,
   DropdownToggle,
@@ -8,26 +9,6 @@ import {
 import axios from "../../axios/axios";
 
 class LocationDropdown extends Component {
-  // componentDidMount() {
-  //   this.getLocations();
-  // }
-
-  getLocations() {
-    axios
-      // NB: Hard coded for now - country needs to be obtained from selection made in countries dropdown
-      .get("/locations?city=Tasmania Region")
-      .then(response => {
-        for (let i = 0; i < response.data.results.length; i++) {
-          this.locations.push(response.data.results[i].location);
-        }
-      })
-      .catch(error => {
-        console.log(
-          "There was an error getting a list of available locations:" + error
-        );
-      });
-  }
-
   constructor(props) {
     super(props);
     this.locations = [];
@@ -37,6 +18,33 @@ class LocationDropdown extends Component {
       dropdownOpen: false
     };
   }
+  componentDidUpdate() {
+    this.getLocations();
+  }
+
+  static get propTypes() {
+    return {
+      chosenCityFromHeader: PropTypes.string,
+      onSetLocation: PropTypes.func
+    };
+  }
+
+  getLocations() {
+    this.locations = [];
+    axios
+      // NB: Hard coded for now - country needs to be obtained from selection made in countries dropdown
+      .get("/locations?city=" + this.props.chosenCityFromHeader)
+      .then(response => {
+        for (let i = 0; i < response.data.results.length; i++) {
+          this.locations.push(response.data.results[i].location);
+        }
+      })
+      .catch(error => {
+        alert(
+          "There was an error getting a list of available locations:" + error
+        );
+      });
+  }
 
   toggle() {
     this.setState({
@@ -44,13 +52,26 @@ class LocationDropdown extends Component {
     });
   }
 
+  handleLocationSelection(selectedLocation) {
+    this.props.onSetLocation(selectedLocation);
+  }
+
   render() {
     let locationNames = this.locations.map((location, index) => {
-      return <DropdownItem key={index}>{location}</DropdownItem>;
+      return (
+        <DropdownItem
+          key={index}
+          onClick={() => {
+            this.handleLocationSelection(location);
+          }}
+        >
+          {location}
+        </DropdownItem>
+      );
     });
     return (
       <Dropdown size="sm" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>Locations</DropdownToggle>
+        <DropdownToggle caret>Location</DropdownToggle>
         <DropdownMenu
           modifiers={{
             setMaxHeight: {
@@ -70,6 +91,6 @@ class LocationDropdown extends Component {
       </Dropdown>
     );
   }
-};
+}
 
 export default LocationDropdown;

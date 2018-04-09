@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   Dropdown,
   DropdownToggle,
@@ -8,23 +9,25 @@ import {
 import axios from "../../axios/axios";
 
 class CityDropdown extends Component {
-  // componentDidMount() {
-  //   this.getCities();
-  // }
+  componentDidUpdate() {
+    this.getCities();
+  }
+
+  static get propTypes() {
+    return { chosenCountryCodeFromHeader: PropTypes.string, onSetCity: PropTypes.func };
+  }
 
   getCities() {
+    this.cities = [];
     axios
-      // NB: Hard coded for now - country needs to be obtained from selection made in countries dropdown
-      .get("/cities?country=AU")
+      .get("/cities?country=" + this.props.chosenCountryCodeFromHeader)
       .then(response => {
         for (let i = 0; i < response.data.results.length; i++) {
           this.cities.push(response.data.results[i].city);
         }
       })
       .catch(error => {
-        console.log(
-          "There was an error getting a list of available cities:" + error
-        );
+        alert("There was an error getting a list of available cities:" + error);
       });
   }
 
@@ -44,13 +47,21 @@ class CityDropdown extends Component {
     });
   }
 
+  handleCitySelection(selectedCity) {
+    this.props.onSetCity(selectedCity);
+  }
+
   render() {
     let cityNames = this.cities.map((city, index) => {
-      return <DropdownItem key={index}>{city}</DropdownItem>;
+      return <DropdownItem key={index} onClick={() => {
+            this.handleCitySelection(city);
+          }}>
+          {city}
+        </DropdownItem>;
     });
     return (
       <Dropdown size="sm" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>Cities</DropdownToggle>
+        <DropdownToggle caret>City</DropdownToggle>
         <DropdownMenu
           modifiers={{
             setMaxHeight: {
@@ -70,6 +81,6 @@ class CityDropdown extends Component {
       </Dropdown>
     );
   }
-};
+}
 
 export default CityDropdown;
