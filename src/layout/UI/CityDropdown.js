@@ -53,7 +53,7 @@ class CityDropdown extends Component {
 
   render() {
     let cityNames = this.cities.map((city, index) => {
-      return <DropdownItem key={index} onClick={() => {
+        return <DropdownItem key={index} onClick={() => {
             this.handleCitySelection(city);
           }}>
           {city}
@@ -67,16 +67,20 @@ class CityDropdown extends Component {
             setMaxHeight: {
               enabled: true,
               order: 890,
-              fn: data => {
+              fn: (data) => {
                 return {
                   ...data,
-                  styles: { ...data.styles, overflow: "auto", maxHeight: 100 }
+                  styles: {
+                    ...data.styles,
+                    overflow: 'auto',
+                    maxHeight: 100,
+                  },
                 };
-              }
-            }
+              },
+            },
           }}
         >
-          {cityNames}
+          {cityNames.length !== 0 ? cityNames : "Pick a country"}
         </DropdownMenu>
       </Dropdown>
     );

@@ -58,16 +58,16 @@ class LocationDropdown extends Component {
 
   render() {
     let locationNames = this.locations.map((location, index) => {
-      return (
-        <DropdownItem
-          key={index}
-          onClick={() => {
-            this.handleLocationSelection(location);
-          }}
-        >
-          {location}
-        </DropdownItem>
-      );
+        return (
+          <DropdownItem
+            key={index}
+            onClick={() => {
+              this.handleLocationSelection(location);
+            }}
+          >
+            {location}
+          </DropdownItem>
+        );
     });
     return (
       <Dropdown size="sm" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
@@ -86,7 +86,7 @@ class LocationDropdown extends Component {
             }
           }}
         >
-          {locationNames}
+          {locationNames.length !== 0 ? locationNames : "Pick a city"}
         </DropdownMenu>
       </Dropdown>
     );

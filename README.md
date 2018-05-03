@@ -32,6 +32,8 @@ This is a single-page app using the OpenAQ API for air quality data, built in Re
 
 * Installed spinner from <https://projects.lukehaas.me/css-loaders/>
 
+* Inserted "Pick a city" and "Pick a country" on City and Location Dropdowns as defaults before country is chosen.
+
 ## To do
 
 * Outsource the Gauge components so that only certain properties are changed (i.e. for each pollutant type when used in the Infodisplay component)
@@ -40,4 +42,4 @@ This is a single-page app using the OpenAQ API for air quality data, built in Re
 
 * Find a solution to the fact that the modifiers do not appear to be working on the Dropdowns. These should set a maximum height for each dropdown with a scroll overflow feature. Instead, long lists stretch off the page.
 
-However, the basic functionality of the app works.  
+However, the basic functionality of the app works.

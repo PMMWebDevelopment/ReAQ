@@ -76,13 +76,17 @@ class CountryDropdown extends Component {
             setMaxHeight: {
               enabled: true,
               order: 890,
-              fn: data => {
+              fn: (data) => {
                 return {
                   ...data,
-                  styles: { ...data.styles, overflow: "auto", maxHeight: 100 }
+                  styles: {
+                    ...data.styles,
+                    overflow: 'auto',
+                    maxHeight: 100,
+                  },
                 };
-              }
-            }
+              },
+            },
           }}
         >
           {countryNames}

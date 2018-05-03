@@ -111,178 +111,89 @@ class Infodisplay extends Component {
     };
 
     const gaugeWidth = 250;
-    return (
-      this.props.chosenLocationFromAppJS ? (
-        <Container className={classes.Infodisplay}>
-          {!this.state.loading ? (
-            <Row>
+    return this.props.chosenLocationFromAppJS ? <Container className={classes.Infodisplay}>
+        {!this.state.loading ? <Row>
             <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.coData.value > 0 ? (
-                <div className={classes.Pollutant}>
-                <div>
-                  <Gauge
-                    label="CARBON MONOXIDE (CO): µg/m³"
-                    topLabelStyle={gaugeTopLabelStyle}
-                    valueLabelStyle={gaugeValueLabelStyle}
-                    minMaxLabelStyle={gaugeTopLabelStyle}
-                    value={this.state.coData.unit === 'ppm' ? ((this.state.coData.value * 1145).toFixed(2)) : this.state.coData.value.toFixed(2)}
-                    width={gaugeWidth}
-                    height={200}
-                    max={10000}
-                    color="#ff0000"
-                  />
-                </div>
-                <div className={classes.PollutantData}>
-                  {moment(this.state.coData.lastUpdated).format(
-                    "D MMM YYYY HHmm"
-                  )}. Source: {this.state.coData.sourceName}
-                </div>
-              </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>CARBON MONOXIDE (CO) - No data available</div>
-              )}
-            </Col>
-            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.so2Data.value > 0 ? (
-                <div className={classes.Pollutant}>
-                <div>
-                  <Gauge
-                    label="SULFUR DIOXIDE (SO₂): µg/m³"
-                    topLabelStyle={gaugeTopLabelStyle}
-                    valueLabelStyle={gaugeValueLabelStyle}
-                    minMaxLabelStyle={gaugeTopLabelStyle}
-                    value={this.state.so2Data.unit === 'ppm' ? ((this.state.so2Data.value * 2620).toFixed(2)) : this.state.so2Data.value.toFixed(2)}
-                    width={gaugeWidth}
-                    height={200}
-                    max={125}
-                    color="#ff0000"
-                  />
-                </div>
-                <div className={classes.PollutantData}>
-                  {moment(this.state.so2Data.lastUpdated).format(
-                    "D MMM YYYY HHmm"
-                  )}. Source: {this.state.so2Data.sourceName}
-                </div>
-              </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>SULFUR DIOXIDE (SO₂) - No data available</div>
-              )}
-            </Col>
-            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.no2Data.value > 0 ? (
-                <div className={classes.Pollutant}>
-                <div>
-                  <Gauge
-                    label="NITROGEN DIOXIDE (NO₂): µg/m³"
-                    topLabelStyle={gaugeTopLabelStyle}
-                    valueLabelStyle={gaugeValueLabelStyle}
-                    minMaxLabelStyle={gaugeTopLabelStyle}
-                    value={this.state.no2Data.unit === 'ppm' ? ((this.state.no2Data.value * 1880).toFixed(2)) : this.state.no2Data.value.toFixed(2)}
-                    width={gaugeWidth}
-                    height={200}
-                    max={40}
-                    color="#ff0000"
-                  />
-                </div>
-                <div className={classes.PollutantData}>
-                  {moment(this.state.no2Data.lastUpdated).format(
-                    "D MMM YYYY HHmm"
-                  )}. Source: {this.state.no2Data.sourceName}
-                </div>
-              </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>NITROGEN DIOXIDE (NO₂) - No data available</div>
-              )}
-            </Col>
-          </Row>
-          ) : (<Spinner />)} 
-          {!this.state.loading ? (
-            <Row>
-            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.o3Data.value > 0 ? (
-                <div className={classes.Pollutant}>
-                <div>
-                  <Gauge
-                    label="OZONE/TRIOXYGEN (O₃): µg/m³"
-                    topLabelStyle={gaugeTopLabelStyle}
-                    valueLabelStyle={gaugeValueLabelStyle}
-                    minMaxLabelStyle={gaugeTopLabelStyle}
-                    value={this.state.o3Data.unit === 'ppm' ? ((this.state.o3Data.value * 2000).toFixed(2)) : this.state.o3Data.value.toFixed(2)}
-                    width={gaugeWidth}
-                    height={200}
-                    max={120}
-                    color="#ff0000"
-                  />
-                </div>
-                <div className={classes.PollutantData}>
-                  {moment(this.state.o3Data.lastUpdated).format(
-                    "D MMM YYYY HHmm"
-                  )}. Source: {this.state.o3Data.sourceName}
-                </div>
-              </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>OZONE/TRIOXYGEN (O₃) - No data available</div>
-              )}
-            </Col>
-            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.pm25Data.value > 0 ? (
-                <div className={classes.Pollutant}>
+              {this.state.coData.value > 0 ? <div className={classes.Pollutant}>
                   <div>
-                    <Gauge
-                      label="PARTICULATES &le;2.5µm (PM₂.₅): µg/m³"
-                      topLabelStyle={gaugeTopLabelStyle}
-                      valueLabelStyle={gaugeValueLabelStyle}
-                      minMaxLabelStyle={gaugeTopLabelStyle}
-                      value={this.state.pm25Data.value.toFixed(2)}
-                      width={gaugeWidth}
-                      height={200}
-                      max={30}
-                      color="#ff0000"
-                    />
+                    <Gauge label="CARBON MONOXIDE (CO): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.coData.unit === "ppm" ? (this.state.coData.value * 1145).toFixed(2) : this.state.coData.value.toFixed(2)} width={gaugeWidth} height={200} max={10000} color="#ff0000" />
                   </div>
                   <div className={classes.PollutantData}>
-                    {moment(this.state.pm25Data.lastUpdated).format(
-                      "D MMM YYYY HHmm"
-                    )}. Source: {this.state.pm25Data.sourceName}
+                    {moment(this.state.coData.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.coData.sourceName}
                   </div>
-                </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>VERY FINE PARTICULATES - No data available</div>
-              )}
+                </div> : <div className={classes.DataNotAvailable}>
+                  CARBON MONOXIDE (CO) - No data available
+                </div>}
             </Col>
             <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
-              {this.state.pm10Data.value > 0 ? (
-                <div className={classes.Pollutant}>
+              {this.state.so2Data.value > 0 ? <div className={classes.Pollutant}>
                   <div>
-                    <Gauge
-                      label="PARTICULATES &lt;10µm (PM₁₀): µg/m³"
-                      topLabelStyle={gaugeTopLabelStyle}
-                      valueLabelStyle={gaugeValueLabelStyle}
-                      minMaxLabelStyle={gaugeTopLabelStyle}
-                      value={this.state.pm10Data.value.toFixed(2)}
-                      width={gaugeWidth}
-                      height={200}
-                      max={40}
-                      color="#ff0000"
-                    />
+                    <Gauge label="SULFUR DIOXIDE (SO₂): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.so2Data.unit === "ppm" ? (this.state.so2Data.value * 2620).toFixed(2) : this.state.so2Data.value.toFixed(2)} width={gaugeWidth} height={200} max={125} color="#ff0000" />
                   </div>
                   <div className={classes.PollutantData}>
-                    {moment(this.state.pm10Data.lastUpdated).format(
-                      "D MMM YYYY HHmm"
-                    )}. Source: {this.state.pm10Data.sourceName}
+                    {moment(this.state.so2Data.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.so2Data.sourceName}
                   </div>
-                </div>
-              ) : (
-                <div className={classes.DataNotAvailable}>FINE PARTICULATES - No data available</div>
-              )}
+                </div> : <div className={classes.DataNotAvailable}>
+                  SULFUR DIOXIDE (SO₂) - No data available
+                </div>}
             </Col>
-          </Row>
-          ) : (<Spinner />)}
-        </Container>
-      ) : (
-        <div className={classes.BlankCanvas}>Please choose a country, a city and a location from the dropdown lists above.</div>
-      )
-    );
+            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
+              {this.state.no2Data.value > 0 ? <div className={classes.Pollutant}>
+                  <div>
+                    <Gauge label="NITROGEN DIOXIDE (NO₂): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.no2Data.unit === "ppm" ? (this.state.no2Data.value * 1880).toFixed(2) : this.state.no2Data.value.toFixed(2)} width={gaugeWidth} height={200} max={40} color="#ff0000" />
+                  </div>
+                  <div className={classes.PollutantData}>
+                    {moment(this.state.no2Data.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.no2Data.sourceName}
+                  </div>
+                </div> : <div className={classes.DataNotAvailable}>
+                  NITROGEN DIOXIDE (NO₂) - No data available
+                </div>}
+            </Col>
+          </Row> : <Row>
+            <Spinner />
+          </Row>}
+        {!this.state.loading ? <Row>
+            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
+              {this.state.o3Data.value > 0 ? <div className={classes.Pollutant}>
+                  <div>
+                    <Gauge label="OZONE/TRIOXYGEN (O₃): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.o3Data.unit === "ppm" ? (this.state.o3Data.value * 2000).toFixed(2) : this.state.o3Data.value.toFixed(2)} width={gaugeWidth} height={200} max={120} color="#ff0000" />
+                  </div>
+                  <div className={classes.PollutantData}>
+                    {moment(this.state.o3Data.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.o3Data.sourceName}
+                  </div>
+                </div> : <div className={classes.DataNotAvailable}>
+                  OZONE/TRIOXYGEN (O₃) - No data available
+                </div>}
+            </Col>
+            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
+              {this.state.pm25Data.value > 0 ? <div className={classes.Pollutant}>
+                  <div>
+                    <Gauge label="PARTICULATES &le;2.5µm (PM₂.₅): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.pm25Data.value.toFixed(2)} width={gaugeWidth} height={200} max={30} color="#ff0000" />
+                  </div>
+                  <div className={classes.PollutantData}>
+                    {moment(this.state.pm25Data.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.pm25Data.sourceName}
+                  </div>
+                </div> : <div className={classes.DataNotAvailable}>
+                  VERY FINE PARTICULATES - No data available
+                </div>}
+            </Col>
+            <Col md={{ offset: 1, size: 10 }} lg={{ offset: 0, size: 4 }}>
+              {this.state.pm10Data.value > 0 ? <div className={classes.Pollutant}>
+                  <div>
+                    <Gauge label="PARTICULATES &lt;10µm (PM₁₀): µg/m³" topLabelStyle={gaugeTopLabelStyle} valueLabelStyle={gaugeValueLabelStyle} minMaxLabelStyle={gaugeTopLabelStyle} value={this.state.pm10Data.value.toFixed(2)} width={gaugeWidth} height={200} max={40} color="#ff0000" />
+                  </div>
+                  <div className={classes.PollutantData}>
+                    {moment(this.state.pm10Data.lastUpdated).format("D MMM YYYY HHmm")}. Source: {this.state.pm10Data.sourceName}
+                  </div>
+                </div> : <div className={classes.DataNotAvailable}>
+                  FINE PARTICULATES - No data available
+                </div>}
+            </Col>
+          </Row> : (<Row><Spinner /></Row>)}
+      </Container> : <div className={classes.BlankCanvas}>
+        Please choose a country, a city and a location from the dropdown
+        lists above.
+      </div>;
   }
 }
 
