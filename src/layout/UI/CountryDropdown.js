@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import PropTypes from 'prop-types';
 import axios from "../../axios/axios";
 
 class CountryDropdown extends Component {
@@ -82,7 +82,7 @@ class CountryDropdown extends Component {
                   styles: {
                     ...data.styles,
                     overflow: 'auto',
-                    maxHeight: 100,
+                    maxHeight: 200,
                   },
                 };
               },

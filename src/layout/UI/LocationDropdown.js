@@ -80,7 +80,7 @@ class LocationDropdown extends Component {
               fn: data => {
                 return {
                   ...data,
-                  styles: { ...data.styles, overflow: "auto", maxHeight: 100 }
+                  styles: { ...data.styles, overflow: "auto", maxHeight: 200 }
                 };
               }
             }

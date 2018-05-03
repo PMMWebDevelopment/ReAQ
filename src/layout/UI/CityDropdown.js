@@ -73,7 +73,7 @@ class CityDropdown extends Component {
                   styles: {
                     ...data.styles,
                     overflow: 'auto',
-                    maxHeight: 100,
+                    maxHeight: 200,
                   },
                 };
               },

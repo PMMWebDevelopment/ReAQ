@@ -34,12 +34,10 @@ This is a single-page app using the OpenAQ API for air quality data, built in Re
 
 * Inserted "Pick a city" and "Pick a country" on City and Location Dropdowns as defaults before country is chosen.
 
+* Solved the issue of the overflowing dropdowns by upgrading reactstrap to 6.0.1 and upgrading other dependencies.
+
 ## To do
 
 * Outsource the Gauge components so that only certain properties are changed (i.e. for each pollutant type when used in the Infodisplay component)
 
-* Condense the Dropdowns to one file where they are only altered when used in the Header component to reflect the different Axios calls which need to be made (for country, city and location respectively)
-
-* Find a solution to the fact that the modifiers do not appear to be working on the Dropdowns. These should set a maximum height for each dropdown with a scroll overflow feature. Instead, long lists stretch off the page.
-
-However, the basic functionality of the app works.
+* Condense the Dropdowns to one file where they are only altered when used in the Header component to reflect the different Axios calls which need to be made (for country, city and location respectively).

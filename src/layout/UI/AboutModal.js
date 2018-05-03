@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import classes from './AboutModal.css';
 
 class AboutModal extends Component {
 
@@ -21,7 +22,7 @@ class AboutModal extends Component {
     render() {
         return <div>
         <Button size="sm" color="primary" onClick={this.toggle}>?</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={classes.Modal}>
           <ModalHeader toggle={this.toggle}>About the data on this site</ModalHeader>
           <ModalBody>
             <h3>Carbon Monoxide</h3>

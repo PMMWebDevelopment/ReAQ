@@ -192,7 +192,7 @@ class Infodisplay extends Component {
           </Row> : (<Row><Spinner /></Row>)}
       </Container> : <div className={classes.BlankCanvas}>
         Please choose a country, a city and a location from the dropdown
-        lists above.
+        lists above to retrieve key data on air quality in cities around the world.
       </div>;
   }
 }
